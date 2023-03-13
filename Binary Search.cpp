@@ -2,35 +2,42 @@
 
 using namespace std;
 
-int SearchBinary(int arr[], int low, int high, int target) 
+int binarySearch(int arr[], int low, int high, int target)
 {
-   
-    while (low <= high) 
-	{
-        int mid = (low + high) / 2;
+    // Selama nilai rendah kurang dari atau sama dengan nilai tinggi
+    while (low <= high) {
+        // Mencari nilai tengah antara low dan high
+        int mid = (low + high)/ 2;
+
+        // Jika nilai tengah sama dengan target, kembalikan indeksnya
         if (arr[mid] == target)
             return mid;
+
+        // Jika nilai tengah lebih besar dari target, cari di setengah kiri
         if (arr[mid] > target)
             high = mid - 1;
+
+        // Jika nilai tengah lebih kecil dari target, cari di setengah kanan
         else
             low = mid + 1;
     }
 
+    // Jika target tidak ditemukan, kembalikan -1
     return -1;
 }
 
-int main() 
-{
+int main() {
+    // Inisialisasi array dengan nilai 0 hingga 1000, mengisi setiap elemen dalam array dengan nilai dari 0 sampai 1000 secara berurutan
     int arr[1000];
-    for (int i = 0; i <= 1000; i++) 
-	{
+    for (int i = 0; i <= 1000; i++) {
         arr[i] = i;
     }
-    
+
+    // Memanggil fungsi binarySearch untuk mencari halaman 755
     int low = 0;
     int high = 1000;
     int target = 755;
-    int hasil = SearchBinary(arr, low, high, target);
+    int hasil = binarySearch(arr, low, high, target);
 
     if (hasil == -1)
         cout <<"Halaman tidak ditemukan\n" << endl;
@@ -39,4 +46,3 @@ int main()
 
     return 0;
 }
-
